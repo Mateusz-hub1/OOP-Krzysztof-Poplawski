@@ -1,0 +1,23 @@
+// Zadanie 2: Przeliczanie temperatur 
+using System.Globalization;
+
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
+Console.Write("Wybierz kierunek (C - Celsjusz→Fahrenheit, F - Fahrenheit→Celsjusz): ");
+string kierunek = Console.ReadLine().Trim().ToUpper();
+Console.Write("Podaj temperaturę: ");
+double temp = double.Parse(Console.ReadLine().Replace(',', '.'));
+
+switch (kierunek)
+{
+    case "C":
+        Console.WriteLine($"{temp}°C = {temp * 1.8 + 32}°F");
+        break;
+    case "F":
+        Console.WriteLine($"{temp}°F = {(temp - 32) / 1.8}°C");
+        break;
+    default:
+        Console.WriteLine("Nieznany kierunek konwersji.");
+        break;
+}

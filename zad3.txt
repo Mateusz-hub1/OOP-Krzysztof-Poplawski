@@ -1,0 +1,35 @@
+// Zadanie 3: Średnia ocen 
+using System.Globalization;
+
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
+Console.Write("Ile ocen chcesz wprowadzić? ");
+int n = int.Parse(Console.ReadLine());
+
+if (n <= 0)
+{
+    Console.WriteLine("Liczba ocen musi być większa od zera.");
+    return;
+}
+
+double suma = 0;
+for (int i = 1; i <= n; i++)
+{
+    Console.Write($"Ocena {i}: ");
+    double ocena = double.Parse(Console.ReadLine().Replace(',', '.'));
+    while (ocena < 1 || ocena > 6)
+    {
+        Console.Write("Ocena musi być z zakresu 1-6, podaj ponownie: ");
+        ocena = double.Parse(Console.ReadLine().Replace(',', '.'));
+    }
+    suma += ocena;
+}
+
+double srednia = suma / n;
+Console.WriteLine($"Średnia: {srednia:F2}");
+
+if (srednia >= 3.0)
+    Console.WriteLine("Uczeń zdał.");
+else
+    Console.WriteLine("Uczeń nie zdał.");
